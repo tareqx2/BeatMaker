@@ -1,0 +1,78 @@
+body{
+	background-color: #ABC;
+}
+#instrumentOptions{
+	position: fixed;
+	top: 0px;
+	width: 250px;
+	height: 100%;
+	border-right:2px solid #DDD;
+}
+#instrumentOptions label{
+	margin-top:5px;
+}
+.progress{
+	height:40px;
+}
+.progress span{
+	color: #AA0000;
+	font-size:12px;
+}
+#soundUploader{
+	width:100%;
+	height:150px;
+	background-color:#444;
+}
+#soundUploader.dragover .square{
+	border: 4px dotted #FFF;
+}
+#soundUploader .square{
+	border: 4px dotted #CCC;
+	width:75%;
+	height: 75%;
+	position: relative;
+	top: 18px;
+	left: 28px;
+}
+.list-group label{
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+}
+.list-group h4{
+	text-align: right;
+}
+.list-group h4 span{
+	cursor: pointer;
+}
+
+#soundUploader .square h3{
+	margin:0px;
+	color:#fff;
+	font-size:18px;
+	margin-top:20px;
+	text-align: center;
+}
+
+#uploadProgress .progress{
+	margin-bottom:5px;
+}
+
+#playOptions{
+	position: fixed;
+	top: 0px;
+	left:250px;
+	height:55px;
+	padding-top:10px;
+	width: calc(100% - 250px);
+	background-color: #AAA;
+}
+
+#beatPad{
+	position:fixed;
+	top:55px;
+	left:250px;
+	width: calc(100% - 250px);
+	height: calc(100% - 55px);
+	background-color: #AAA;
+	z-index:0;
+}

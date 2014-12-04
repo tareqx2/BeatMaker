@@ -1,0 +1,25 @@
+{
+  "name": "BeatMaker",
+  "version": "0.0.0",
+  "description": "BeatMaker =========",
+  "main": "index.js",
+  "dependencies": {
+    "connect-busboy": "0.0.2",
+    "express": "^4.10.4",
+    "less": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tareqx2/BeatMaker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tareqx2/BeatMaker/issues"
+  },
+  "homepage": "https://github.com/tareqx2/BeatMaker"
+}

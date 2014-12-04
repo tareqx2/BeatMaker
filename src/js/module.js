@@ -1,0 +1,1 @@
+var beatMakerModule = angular.module('Beatmaker', ['ngDraggable','angularFileUpload']);
