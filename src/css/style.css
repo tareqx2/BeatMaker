@@ -96,7 +96,10 @@ body{
 	margin-left:10px;
 	width:50px;
 }
-.note2.drag-enter{
+.measure.drag-enter .eigth{
+	border:1px solid yellow;
+}
+.measure_alternate.drag-enter .eigth{
 	border:1px solid yellow;
 }
 .note{
@@ -114,25 +117,23 @@ body{
 	width:2%;
 	display:inline-block;
 }
+.measure.end{
+	border-right:2px solid black;
+}
 .measure_alternate{
 	width:2%;
 	display: inline-block;
 }
-.sixteenth{
+.measure.hidden{
+	display:none;
+}
+.eigth{
 	height:100%;
 	width:82%;
 	//margin-left:12px;
 	opacity: 0.75;
 	border:1px solid black;
 	//background-color:red;
-}
-.eigth{
-	height:100%;
-	margin-left:12px;
-	width:63%;
-	opacity: 0.75;
-	border:1px solid black;
-	//background-color:yellow;
 }
 .fourth{
 	height:100%;

@@ -1,7 +1,7 @@
 beatMakerModule.directive('measure',function(){
 	return {
 		restrict: 'AE',
-		template: '<div class="sixteenth">'
+		template: '<div class="eigth">'
 
 	};
 });

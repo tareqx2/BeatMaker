@@ -1,5 +1,5 @@
 <html>
-<body ng-app="Beatmaker">
+<body ng-app="Beatmaker" ng-controller="dataController">
 	<div id="instrumentOptions" ng-controller="instrumentController">
 		<div id="soundUploader" ng-model="files" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" ng-file-drop multiple="true" allow-dir="true" ng-file-change="upload(files)" accept="*wav,*mp3,*ogg,*midi">
 			<div class="square">
@@ -17,7 +17,7 @@
 		</div>
    
 		<div class="list-group">
-		  <label effect-allowed="copy" draggable-data="{{instrument}}" draggable-type="custom-object" draggable="true" ng-repeat="instrument in instruments" class="list-group-item">
+		  <label effect-allowed="copy" draggable-data="{{instrument}}" draggable-type="instrument" draggable="true" ng-repeat="instrument in instruments" class="list-group-item">
 		    <h4 class="list-group-item-heading">{{instrument.name}} 
 		    	<span title="Play" ng-prevent-drag="true" ng-click="playSound(instrument)" class="glyphicon glyphicon-play-circle"></span> 
 		    	<span title="Remove" ng-prevent-drag="true" ng-click="removeSound(instrument)" class="glyphicon glyphicon-remove-sign"></span>
@@ -26,10 +26,10 @@
 		</div>
 	</div>
 
-	<div id="playOptions">
+	<div id="playOptions" ng-controller="musicController">
 		<div class="btn-group btn-group-justified" role="group" aria-label="...">
 		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-default btn-lg">Play</button>
+		    <button ng-click="playTracks()" type="button" class="btn btn-default btn-lg">Play</button>
 		  </div>
 		  <div class="btn-group" role="group">
 		    <button type="button" class="btn btn-default btn-lg">Stop</button>
@@ -47,12 +47,12 @@
 	</div>
 	<div id="beatPad" ng-controller="trackController" ng-click="finishEdit()">
 		<button ng-click="addTrack()" class="addTrackBtn btn btn-primary">Add Track</button>
-		<div ng-repeat="track in tracks" class="track alert alert-info">
+		<div data-id="{{$index}}" ng-repeat="track in tracks track by $index" class="track alert alert-info">
 			<span ng-hide="track.editing" ng-dblclick="editTrackName(track,$event)">{{track.name}}</span>
 			<input maxlength="10" id="editTrackName" ng-show="track.editing" placeholder="{{track.name}}" ng-model="name">
 			<!-- <div class="note measure" note></div> -->
-			<div drop="onDrop($data, $event)" drop-effect="copy" drop-accept="'json/custom-object'" drag-over="onDragOver($event)" drag-over-class="drag-enter" class="note2">
-					<div measure ng-repeat="i in getNumber(number) track by $index" class="{{getMeasureClass($index)}}"></div>
+			<div class="note2">
+					<div measure drop="onDrop($data, $event)" drop-effect="copy" drop-accept="'json/instrument'" drag-over-class="drag-enter" data-id="{{$index}}" ng-repeat="i in getNumber(number) track by $index" class="{{getMeasureClass($index)}}"></div>
 			</div>
 		</div>
 	</div>
@@ -64,8 +64,10 @@
 <script src="js/module.js"></script>
 <script src="ngDraggable/ngDraggable.js"></script>
 <script src="angular-draganddrop/angular-draganddrop.js"></script>
+<script src="js/Controllers/dataController.js"></script>
 <script src="js/Controllers/instrumentController.js"></script>
 <script src="js/Controllers/trackController.js"></script>
+<script src="js/Controllers/musicController.js"></script>
 <script src="js/directives/note.js"></script>
 <script src="js/directives/measure.js"></script>
 <script src="js/directives/focus-on.js"></script>
