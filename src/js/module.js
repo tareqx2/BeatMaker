@@ -1,1 +1,1 @@
-var beatMakerModule = angular.module('Beatmaker', ['ngDraggable','angularFileUpload']);
+var beatMakerModule = angular.module('Beatmaker', ['ngDraggable','angularFileUpload','draganddrop']);

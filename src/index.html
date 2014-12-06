@@ -3,7 +3,7 @@
 	<div id="instrumentOptions" ng-controller="instrumentController">
 		<div id="soundUploader" ng-model="files" drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" ng-file-drop multiple="true" allow-dir="true" ng-file-change="upload(files)" accept="*wav,*mp3,*ogg,*midi">
 			<div class="square">
-				<h3>Drag and Drop</h3>
+				<h3>Drag New</h3>
 				<h3>Sound Clip Here</h3>
 			</div>
 		</div>
@@ -15,12 +15,12 @@
 			  </div>
 			</div>
 		</div>
-
+   
 		<div class="list-group">
-		  <label ng-drag="true" ng-drag-data="{{obj}}" draggable="false" ng-repeat="instrument in instruments" class="list-group-item">
+		  <label effect-allowed="copy" draggable-data="{{instrument}}" draggable-type="custom-object" draggable="true" ng-repeat="instrument in instruments" class="list-group-item">
 		    <h4 class="list-group-item-heading">{{instrument.name}} 
 		    	<span title="Play" ng-prevent-drag="true" ng-click="playSound(instrument)" class="glyphicon glyphicon-play-circle"></span> 
-		    	<span title="Remove" ng-prevent-drag="true" class="glyphicon glyphicon-remove-sign"></span>
+		    	<span title="Remove" ng-prevent-drag="true" ng-click="removeSound(instrument)" class="glyphicon glyphicon-remove-sign"></span>
 		    </h4>
 		  </a>
 		</div>
@@ -45,7 +45,16 @@
 		  </div>
 		</div>
 	</div>
-	<div id="beatPad">
+	<div id="beatPad" ng-controller="trackController" ng-click="finishEdit()">
+		<button ng-click="addTrack()" class="addTrackBtn btn btn-primary">Add Track</button>
+		<div ng-repeat="track in tracks" class="track alert alert-info">
+			<span ng-hide="track.editing" ng-dblclick="editTrackName(track,$event)">{{track.name}}</span>
+			<input maxlength="10" id="editTrackName" ng-show="track.editing" placeholder="{{track.name}}" ng-model="name">
+			<!-- <div class="note measure" note></div> -->
+			<div drop="onDrop($data, $event)" drop-effect="copy" drop-accept="'json/custom-object'" drag-over="onDragOver($event)" drag-over-class="drag-enter" class="note2">
+					<div measure ng-repeat="i in getNumber(number) track by $index" class="{{getMeasureClass($index)}}"></div>
+			</div>
+		</div>
 	</div>
 </body>
 <script src="jquery/dist/jquery.js"></script>
@@ -54,7 +63,12 @@
 <script src="ng-file-upload/angular-file-upload-all.js"></script>
 <script src="js/module.js"></script>
 <script src="ngDraggable/ngDraggable.js"></script>
+<script src="angular-draganddrop/angular-draganddrop.js"></script>
 <script src="js/Controllers/instrumentController.js"></script>
+<script src="js/Controllers/trackController.js"></script>
+<script src="js/directives/note.js"></script>
+<script src="js/directives/measure.js"></script>
+<script src="js/directives/focus-on.js"></script>
 <script src="js/services/loadInstruments.js"></script>
 <script src="bootstrap/dist/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css" />
