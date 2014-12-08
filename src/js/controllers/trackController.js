@@ -1,7 +1,5 @@
 beatMakerModule.controller('trackController',['$scope',function ($scope) {
-	$scope.tracks = [];
-	$scope.editingTrack = false;
-	$scope.number = 49;
+
 	$scope.getNumber = function(num) {
 	    return new Array(num);   
 	}
